@@ -12,5 +12,10 @@ def even_or_odd(number: int) -> str:
     return "even"
   return "odd"
 
-num = get_int()
-print(even_or_odd(num))
+
+def main():
+    num = get_int()
+    print(even_or_odd(num))
+
+
+if __name__ == "__main__": main()

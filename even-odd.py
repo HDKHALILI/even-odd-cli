@@ -7,15 +7,15 @@ def get_int() -> int:
       print(f"'{input_str}' is not valid integer")
 
 
-def even_or_odd(number: int) -> str:
-  if number % 2 == 0:
+def even_or_odd(integer: int) -> str:
+  if integer % 2 == 0:
     return "even"
   return "odd"
 
 
 def main():
-    num = get_int()
-    print(even_or_odd(num))
+    integer = get_int()
+    print(even_or_odd(integer))
 
 
 if __name__ == "__main__": main()

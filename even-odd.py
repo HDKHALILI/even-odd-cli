@@ -4,14 +4,19 @@ def get_int() -> int | None:
         try:
             input_str = input("Enter an integer: ")
             return int(input_str)
-        except ValueError:
-            print(f"Invalid integer. Please enter a valid integer.")
+        except ValueError as err:
+            if "Exceeds the limit" in str(err):
+                print("Integer is too large. Please enter a smaller integer.")
+            else:
+                print(f"Invalid integer. Please enter a valid integer.")
         except EOFError:
             return None
+
 
 def is_even(integer: int) -> bool:
     """Return True if the given integer is even, False otherwise."""
     return integer % 2 == 0
+
 
 def main() -> None:
     integer = get_int()

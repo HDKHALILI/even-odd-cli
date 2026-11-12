@@ -1,1 +1,8 @@
+# Byte-compiled
+__pycache__
+
+# Playground
+playground.py
+
+# IDEs and OS files
 .DS_Store

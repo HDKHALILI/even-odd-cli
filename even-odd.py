@@ -1,5 +1,5 @@
 def get_int() -> int | None:
-    """Prompt the user until a valid integer is entered, then return it or return None for EOF"""
+    """Prompt for integer until int function doesn't raise a ValueError exception, then return the input converted to int."""
     while True:
         try:
             input_str = input("Enter an integer: ")
@@ -8,7 +8,7 @@ def get_int() -> int | None:
             if "Exceeds the limit" in str(err):
                 print("Integer is too large. Please enter a smaller integer.")
             else:
-                print(f"Invalid integer. Please enter a valid integer.")
+                print("Invalid integer. Please enter a valid integer.")
         except EOFError:
             return None
 
@@ -20,15 +20,16 @@ def is_even(integer: int) -> bool:
 
 def main() -> None:
     integer = get_int()
-    
+
     if integer is None:
         print("\nProgram cancelled by user.")
         return
-    
+
     if is_even(integer):
         print("even")
     else:
         print("odd")
+
 
 if __name__ == "__main__":
     main()

@@ -1,5 +1,7 @@
 import sys
 
+EXIT_ABORTED = 1
+
 
 def get_int() -> int:
     """Prompt the user until a valid base-10 integer is entered and return it.
@@ -38,17 +40,17 @@ def main() -> None:
         integer = get_int()
     except KeyboardInterrupt:
         print("\nProgram cancelled by user.")
-        sys.exit(1)
+        sys.exit(EXIT_ABORTED)
     except EOFError:
         if sys.stdin.isatty():
             print("\nInput cancelled by the user.")
-            sys.exit(1)
+            sys.exit(EXIT_ABORTED)
         else:
             print(
                 "\nError: Reached end of input without receiving a valid integer.",
                 file=sys.stderr,
             )
-            sys.exit(1)
+            sys.exit(EXIT_ABORTED)
 
     if is_even(integer):
         print("even")

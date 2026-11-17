@@ -6,7 +6,7 @@ def get_int() -> int:
 
     Accepts optional leading/trailing whitespace, a '+' or '-' sign, Unicode
     decimal digits (including non-Latin numerals such as '٣'), and
-    a single underscores between digits (e.g., '1_000', '1_000_000').
+    a single underscore between digits (e.g., '1_000', '1_000_000').
 
     Prompt again if the input exceeds the maximum allowed digit count.
 
@@ -34,11 +34,21 @@ def is_even(integer: int) -> bool:
 
 
 def main() -> None:
-    integer = get_int()
-
-    if integer is None:
+    try:
+        integer = get_int()
+    except KeyboardInterrupt:
         print("\nProgram cancelled by user.")
-        return
+        sys.exit(1)
+    except EOFError:
+        if sys.stdin.isatty():
+            print("\nInput cancelled by the user.")
+            sys.exit(1)
+        else:
+            print(
+                "\nError: Reached end of input without receiving a valid integer.",
+                file=sys.stderr,
+            )
+            sys.exit(1)
 
     if is_even(integer):
         print("even")

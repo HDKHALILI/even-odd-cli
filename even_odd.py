@@ -1,6 +1,7 @@
 import sys
 
 EXIT_ABORTED = 1
+DEFAULT_MAX_STR_DIGITS = 4300
 
 
 def get_int() -> int:
@@ -15,7 +16,9 @@ def get_int() -> int:
     Raises:
         EOFError: If the input ends before a valid integer is read.
     """
-    max_digits = sys.get_int_max_str_digits()
+    max_digits = getattr(
+        sys, "get_int_max_str_digits", lambda: DEFAULT_MAX_STR_DIGITS
+    )()
 
     while True:
         try:
@@ -37,7 +40,11 @@ def is_even(integer: int) -> bool:
 
 
 def main() -> None:
-    """Get an integer from get_int, check it with is_even and print 'even' or 'odd'"""
+    """Get an integer and print whether it is 'even' or 'odd'.
+
+    Exits with a message to stderr if input is interrupted or reaches
+    EOF before a valid integer is read.
+    """
     try:
         integer = get_int()
     except KeyboardInterrupt:

@@ -22,7 +22,7 @@ def get_int() -> int:
             input_str = input("Enter an integer: ")
             return int(input_str)
         except ValueError:
-            cleaned_input = input.strip().lstrip("+-")
+            cleaned_input = input_str.strip().lstrip("+-")
             if len(cleaned_input) > max_digits:
                 print(
                     f"Integer is too large (max {max_digits} digits). Please enter a smaller integer."

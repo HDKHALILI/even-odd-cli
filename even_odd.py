@@ -37,6 +37,7 @@ def is_even(integer: int) -> bool:
 
 
 def main() -> None:
+    """Get an integer from get_int, check it with is_even and print 'even' or 'odd'"""
     try:
         integer = get_int()
     except KeyboardInterrupt:

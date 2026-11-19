@@ -4,16 +4,16 @@ EXIT_ABORTED = 1
 
 
 def get_int() -> int:
-    """Prompt the user until a valid base-10 integer is entered and return it.
+    """Prompt until a valid base-10 integer is entered and return it.
 
-    Accepts optional leading/trailing whitespace, a '+' or '-' sign, Unicode
-    decimal digits (including non-Latin numerals such as '٣'), and
-    a single underscore between digits (e.g., '1_000', '1_000_000').
+    Accepts optional leading/trailing whitespace, a '+' or '-' sign,
+    Unicode decimal digits (including non-Latin numerals such as '٣'),
+    and a single underscore between digits (e.g., '1_000').
 
     Prompt again if the input exceeds the maximum allowed digit count.
 
     Raises:
-        EOFError: If the input stream ends before a valid integer is read.
+        EOFError: If the input ends before a valid integer is read.
     """
     max_digits = sys.get_int_max_str_digits()
 

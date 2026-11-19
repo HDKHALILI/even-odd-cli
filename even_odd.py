@@ -1,5 +1,6 @@
 import sys
 
+EXIT_SUCCESS = 0
 EXIT_ABORTED = 1
 DEFAULT_MAX_STR_DIGITS = 4300
 
@@ -42,30 +43,31 @@ def is_even(integer: int) -> bool:
 def main() -> None:
     """Get an integer and print whether it is 'even' or 'odd'.
 
-    Exits with a message to stderr if input is interrupted or reaches
-    EOF before a valid integer is read.
+    Returns 0 on success, or 1 after printing a message to stderr if
+    input is interrupted or reaches EOF before a valid integer is read.
     """
     try:
         integer = get_int()
     except KeyboardInterrupt:
         print("\nProgram cancelled by user.", file=sys.stderr)
-        sys.exit(EXIT_ABORTED)
+        return EXIT_ABORTED
     except EOFError:
         if sys.stdin.isatty():
             print("\nInput cancelled by the user.", file=sys.stderr)
-            sys.exit(EXIT_ABORTED)
         else:
             print(
                 "\nError: Reached end of input without receiving a valid integer.",
                 file=sys.stderr,
             )
-            sys.exit(EXIT_ABORTED)
+        return EXIT_ABORTED
 
     if is_even(integer):
         print("even")
     else:
         print("odd")
 
+    return EXIT_SUCCESS
+
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

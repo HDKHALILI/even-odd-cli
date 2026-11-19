@@ -40,11 +40,11 @@ def main() -> None:
     try:
         integer = get_int()
     except KeyboardInterrupt:
-        print("\nProgram cancelled by user.")
+        print("\nProgram cancelled by user.", file=sys.stderr)
         sys.exit(EXIT_ABORTED)
     except EOFError:
         if sys.stdin.isatty():
-            print("\nInput cancelled by the user.")
+            print("\nInput cancelled by the user.", file=sys.stderr)
             sys.exit(EXIT_ABORTED)
         else:
             print(

@@ -22,8 +22,8 @@ def get_int() -> int:
     )()
 
     while True:
+        input_str = input("Enter an integer: ")
         try:
-            input_str = input("Enter an integer: ")
             return int(input_str)
         except ValueError:
             cleaned_input = input_str.strip().lstrip("+-")
@@ -40,7 +40,7 @@ def is_even(integer: int) -> bool:
     return integer % 2 == 0
 
 
-def main() -> None:
+def main() -> int:
     """Get an integer and print whether it is 'even' or 'odd'.
 
     Returns 0 on success, or 1 after printing a message to stderr if

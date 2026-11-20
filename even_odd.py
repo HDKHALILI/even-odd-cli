@@ -2,7 +2,6 @@ import sys
 
 EXIT_SUCCESS = 0
 EXIT_ABORTED = 1
-DEFAULT_MAX_STR_DIGITS = 4300
 
 
 def get_int() -> int:
@@ -17,9 +16,8 @@ def get_int() -> int:
     Raises:
         EOFError: If the input ends before a valid integer is read.
     """
-    max_digits = getattr(
-        sys, "get_int_max_str_digits", lambda: DEFAULT_MAX_STR_DIGITS
-    )()
+
+    max_digits = sys.get_int_max_str_digits()
 
     while True:
         input_str = input("Enter an integer: ")
@@ -29,7 +27,8 @@ def get_int() -> int:
             cleaned_input = input_str.strip().lstrip("+-")
             if cleaned_input.isdigit() and len(cleaned_input) > max_digits:
                 print(
-                    f"Integer is too large (max {max_digits} digits). Please enter a smaller integer."
+                    f"Integer is too large (max {max_digits} digits). "
+                    "Please enter a smaller integer."
                 )
             else:
                 print("Invalid integer. Please enter a valid integer.")
